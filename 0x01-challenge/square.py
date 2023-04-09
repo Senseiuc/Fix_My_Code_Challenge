@@ -1,11 +1,37 @@
 #!/usr/bin/python3
+""" A SQUARE MODULE """
+
 
 class Square():
 
+    """
+    A class Square that represensts a square
+
+    ...
+
+    Attributes
+    ----------
+    width : int or float
+        the width of the square
+    height : int or float
+        the height of the square
+    """
     width = 0
     height = 0
 
     def __init__(self, *args, **kwargs):
+        """
+        Parameters
+        ----------
+        args : list
+            the list of arguments
+        kwargs : dict
+            the dictionary of values
+        """
+        if args:
+            setattr(self, 'width', args[0])
+            if len(args) > 1:
+                setattr(self, 'height', args[1])
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -14,9 +40,11 @@ class Square():
         return self.width * self.width
 
     def PermiterOfMySquare(self):
+        """ perimeter of the square"""
         return (self.width * 2) + (self.height * 2)
 
     def __str__(self):
+        """ string representation"""
         return "{}/{}".format(self.width, self.height)
 
 
