@@ -30,18 +30,25 @@ class Square():
         kwargs : dict
             the dictionary of values
         """
-        if args:
-            setattr(self, 'width', args[0])
-            if len(args) > 1:
+        for i in range(len(args)):
+            """ loop through the arguments"""
+            if not isinstance(args[i], int):
+                raise ValueError("Enter a integer or float")
+            if i % 2 == 0:
+                setattr(self, 'width', args[0])
+            else:
                 setattr(self, 'height', args[1])
         for key, value in kwargs.items():
+            """ loop through the kwargs dictionary"""
+            if not isinstance(value, int):
+                raise ValueError("Enter a integer or float")
             setattr(self, key, value)
 
     def area_of_my_square(self):
         """ Area of the square """
         return self.width * self.height
 
-    def permiterOfMySquare(self):
+    def perimiter_of_my_square(self):
         """ perimeter of the square"""
         return (self.width * 2) + (self.height * 2)
 
@@ -55,4 +62,4 @@ if __name__ == "__main__":
     s = Square(width=12, height=9)
     print(s)
     print(s.area_of_my_square())
-    print(s.permiterOfMySquare())
+    print(s.perimiter_of_my_square())
